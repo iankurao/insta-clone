@@ -5,6 +5,8 @@ from django.conf import settings
 
 urlpatterns=[
     url(r"^$",views.index,name="home"),
+    url(r"profile/$",views.profile,name="profile"),
+    url(r'profile/upload$',views.uploads,name='uploads'),
     
 ]
 
