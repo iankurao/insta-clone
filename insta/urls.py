@@ -8,6 +8,7 @@ urlpatterns=[
     url(r"profile/$",views.profile,name="profile"),
     url(r'profile/upload$',views.uploads,name='uploads'),
     url(r'profile/edit$',views.edit,name='edit'),
+    url(r"^search/",views.search,name="search"),
     
 ]
 
