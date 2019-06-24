@@ -9,6 +9,21 @@ class Profile(models.Model):
     userId=models.IntegerField()
 
 
+    def __str__(self):
+        return self.bio
+
+    class Meta:
+        ordering=['pic']
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        profile=Profile.objects.all().delete()
+        return profile
+
+
+
     
 
 
