@@ -71,3 +71,14 @@ def edit(request):
             form=EditProfile()
 
             return render(request,"edit.html",{"form":form})
+
+def search(request):
+    if 'user' in request.GET and request.GET['user']:
+        term=request.GET.get("user")
+        found=Image.search_users(term)
+        message=f'{term}'
+
+        return render(request,'search.html',{'message':message,'founds':found,"term":term})
+    else:
+        message=" Please input a user name"
+        return render(request,"search.html",{"message":message})
