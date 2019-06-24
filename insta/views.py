@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import Image,Profile,Comments,Followers
-
+from .forms import PostImage,EditProfile,UpdateProfile
+from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
     title='Home'
