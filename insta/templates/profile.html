@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-{{block.supper}}
+{{block.super}}
 {%block content%}
 {%include 'navbar.html'%}
 
@@ -25,6 +25,7 @@
           <p>This is is your status</p>
           <p>{{i.bio}}</p>
           {%endfor%}
+          <a href="{%url 'uploads'%}">Upload Picture</a></p>
 
 
 
@@ -67,43 +68,31 @@
     <div class="col-md-1"></div>
 
   </div>
-  <br><br><br>
+
+
+</div>
+<div class="container"style="width:100%; ">
+<!-- Footer -->
+<footer class="footer" >
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-9">
-      <!-- Footer -->
-         <footer class="bottom">
-           <ul>
-             <li><a href="">ABOUT US</a></li>
-             <li><a href="">SUPPORT</a></li>
-             <li><a href="">PRESS</a></li>
-             <li><a href="">API</a></li>
-             <li><a href="">JOBS</a></li>
-             <li><a href="">PRIVACY</a></li>
-             <li><a href="">LANGUAGE</a></li>
-             <li><a href="">PROFILES</a></li>
-               <a class="muted"> © Instagram 2019</a>
-           </ul>
+      <!-- Copyright -->
+      <div class="footer-copyright py-3 insta_footer"style="padding-left:150px;"> 
+          <a href="">ABOUT US</a>
+          <a href="">SUPPORT</a>
+          <a href="">PRESS</a>
+          <a href="">API</a>
+          <a href="">JOBS</a>
+          <a href="">PRIVACY</a>
+          <a href="">TERMS</a>
+          <a href="">DIRECTORY</a>
+          <a href="">PROFILES</a>
+          <a href="">HASHTAGS</a>
+          <a href="">LANGUAGE</a>
+          <span> <strong> © 2019 THE_INSTA_GRAM </strong></span>
 
-
-           <!-- Copyright -->
-
-
-
-           <!-- Copyright -->
-
-         </footer>
-         <!-- Footer -->
-
-    </div>
-    <div class="col-md-1"></div>
-
-
-
+      </div>
+      <!-- Copyright -->
   </div>
-
-
-
-
+</footer>
 </div>
 {%endblock%}
