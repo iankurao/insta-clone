@@ -1,9 +1,8 @@
 
   <nav id="nav" class="navbar sticky-top navbar-expand-lg navbar-light">
     <div class="container">
-      <div class="col-md-4" style='display:flex;'>
-        <img src="../../static/img/ic.png" style=height:6.0rem;width:6.0rem;>
-        <a class="navbar-brand" href="{% url 'profile' %}" style='font-size: 275%'> <em>Instagram</em> </a>
+      <div class="col-md-4" style='display:flex;'>    
+        <a  id="icons" class=" navbar-brand" href="{%url 'stories'%}"><i class="fab fa-instagram"></i> <i style="border-left:1px solid rgba(0,0,0,0.4);"> </i> <i class="space"></i>  Instagram </a>
       </div>
       <div class="col-md-4" style="margin-left: 5%; margin-right: -3%;">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,7 +24,7 @@
               <a data-toggle="dropdown" ><i class="fas fa-user-cog" style='margin-top:60%;'></i></a>
               <ul class="dropdown-menu" role="menu">
                 <li>
-                  <a href="">Add Image</a>
+                  <a href="/profile/upload">Add Image</a>
                 </li>
                 <li>
                   <a href="/accounts/password/change">Change Password</a>

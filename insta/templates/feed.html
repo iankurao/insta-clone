@@ -36,14 +36,12 @@
            <div id="car" class="card">
              <div class="card-header">
 
-              <img class="rounded-circle" height="30px" width="auto" src="/static/img/baby.jpg" alt="">
-
                <span>{{image.user}}</span>
              </div>
              <div class="card-">
                <div class="">
                  <a href="/stories/comment/{{image.id}}">
-                 <img class="img-fluid" src="{{image.image.url}}" alt=""></a>
+                 <img class="img-fluid" src="{{image.image.url}}" alt="" style=height:32rem;width:42rem;></a>
                </div>
 
              </div>
@@ -66,7 +64,7 @@
          <div class="contain">
           <a class="goUser" href="{%url 'profile'%}">
             {%for img in profile%}
-            <img id="goUser" class="img-fluid rounded-circle" src="{{img.pic.url}}" alt="{{user}}">
+            <img id="goUser" class="img-fluid rounded-circle" src="{{img.pic.url}}" alt="{{user}}" style=height:15rem;width:15rem;>
             {%endfor%}
            {{user}}</a><br><span>{{user.email}}</span>
 
@@ -74,7 +72,7 @@
 
              <h1>Suggestions</h1>
              {%for all in users%}
-             <img class="rounded-circle" height="30px" width="auto" src="/static/img/baby.jpg" alt="">
+             <img class="rounded-circle" height="30px" width="auto" src="/static/img/9.jpg" alt="" style=height:15rem;width:15rem;>
              <span>{{all.username}}  </span> <a href="/profile/user/{{all.id}}">View Profile</a><br><br>
              {%endfor%}
                <br>

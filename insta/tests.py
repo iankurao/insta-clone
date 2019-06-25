@@ -5,13 +5,13 @@ from .models import Profile,Comments,Image,Followers
 # Create your tests here.
 class TestProfile(TestCase):
     def setUp(self):
-        self.ian=Profile(pic="img.png",bio="I love noddles",userId=1)
+        self.ian=Profile(pic="img.png",bio="noddles",userId=1)
     def test_instance(self):
         self.assertTrue(isinstance(self.ian,Profile))
 
     def test_initialization(self):
         self.assertEqual(self.ian.pic,"img.png")
-        self.assertEqual(self.ian.bio,"I love noodles")
+        self.assertEqual(self.ian.bio,"noodles")
         self.assertEqual(self.ian.userId,1)
 
     def test_save(self):
