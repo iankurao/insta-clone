@@ -1,1 +1,1 @@
-web: gunicorn  instagram.wsgi --log-file -
+web: gunicorn --chdir instagram --log-file - instagram.wsgi:application
