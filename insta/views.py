@@ -3,12 +3,13 @@ from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import Image,Profile,Comments,Followers
 from .forms import PostImage,EditProfile,UpdateProfile
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     title='Home'
     return render(request,"index.html",{"title":title})
 
-
+@login_required(login_url='/accounts/login/')
 def profile(request):
     try:
         current_user=request.user.id
@@ -21,7 +22,7 @@ def profile(request):
 
     return render(request,"profile.html",{'profile':profile_photos,"pic":profile})
 
-
+@login_required(login_url='/accounts/login/')
 def uploads(request):
     title='Upload'
     current_user=request.user
@@ -39,7 +40,7 @@ def uploads(request):
         form=PostImage()
     return render(request,"upload.html",{"title":title,"form":form})    
 
-
+@login_required(login_url='/accounts/login/')
 def edit(request):
     current_user_id=request.user.id
     profile=Profile.objects.filter(userId=current_user_id)
