@@ -1,13 +1,31 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import Image,Profile,Comments,Followers
-from .forms import PostImage,EditProfile,UpdateProfile
+from .forms import PostImage,EditProfile,UpdateProfile,CommentForm,Likes,FormFollow
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     title='Home'
     return render(request,"index.html",{"title":title})
+
+@login_required(login_url="/accounts/login/")
+def stories(request):
+    try:
+        current_user=request.user.id
+        images=Image.objects.all()
+        profile_image=Profile.objects.filter(userId=current_user)
+        profile=profile_image.reverse()[0:1]
+        users=User.objects.all().exclude(id=request.user.id)
+        comments=Comments.objects.all()
+        #comments
+    except Exception as e:
+        raise Http404()
+
+
+    return render(request,'feeds.html',{"images":images,"profile":profile,"users":users,"comments":comments})
+
+
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -73,6 +91,48 @@ def edit(request):
 
             return render(request,"edit.html",{"form":form})
 
+@login_required(login_url='/accounts/login/')
+def comments(request,image_id):
+    try:
+        image=Image.objects.filter(id=image_id).all()
+        comment=Comments.objects.filter(images=image_id).all()
+    except Exception as e:
+        raise  Http404()
+
+    imag=Image.objects.filter(id=image_id).all()
+    # a=imag[4]
+    count=0
+    for i in imag:
+        count+=i.likes
+
+    if request.method=='POST':
+        form=Likes(request.POST)
+        k=request.POST.get("like","")
+        if k:
+
+            like=int(k)
+            if form.is_valid:
+                likes=form.save(commit=False)
+                all=count+like
+                Image.objects.filter(id=image_id).update(likes=all)
+                return redirect('comment',image_id)
+    else:
+        forms=Likes()
+    if request.method=='POST':
+        current_user=request.user
+        i=request.POST.get("id","")
+        form=CommentForm(request.POST)
+        if form.is_valid:
+            comments=form.save(commit=False)
+            comments.user=current_user
+            comments.images=i
+            comments.save()
+            return redirect('comment',image_id)
+    else:
+        form=CommentForm()
+    return render(request,"comment.html",{"images":image,'form':form,"comments":comment,"count":count,"forms":forms})
+
+@login_required(login_url='/accounts/login/')
 def search(request):
     if 'user' in request.GET and request.GET['user']:
         term=request.GET.get("user")
