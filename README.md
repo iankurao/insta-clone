@@ -42,7 +42,7 @@ CREATE DATABASE <preferred name>;
 ### Technologies used
 The different technologies that were used to develop this program include:
 ```
-1. Python 3.6 
+1. Python 3.6
 2. Bootstrap
 3. HTML
 4. CSS
@@ -51,8 +51,6 @@ The different technologies that were used to develop this program include:
 7. Django Framework
 ```
 
-### Link to live site
-Here is a link to the live site https://ian-kurao-insta.herokuapp.com/
 ### Contact Me
 Email:kuraoian@gmail.com
 
